@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AlDarb.Entities\AlDarb.Entities.csproj" ReferenceOutputAssembly="true" />
+    <ProjectReference Include="..\AlDarb.Services.Infrastructure\AlDarb.Services.Infrastructure.csproj" ReferenceOutputAssembly="true" />
+    <ProjectReference Include="..\AlDarb.Utils\AlDarb.Utils.csproj" ReferenceOutputAssembly="true" />
+  </ItemGroup>
+
+</Project>
