@@ -22,6 +22,12 @@ namespace AlDarb.DataAccess.EFCore
         public DbSet<UserPhoto> UserPhotos { get; set; }
         public DbSet<Settings> Settings { get; set; }
 
+        public DbSet<Course> Course { get; set; }
+        public DbSet<CourseSession> CourseSession { get; set; }
+        public DbSet<CourseTask> CourseTask { get; set; }
+        public DbSet<ProgressTask> ProgressTask { get; set; }
+        public DbSet<ApplicationForSession> ApplicationForSession { get; set; }
+        public DbSet<Notification> Notification { get; set; }
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,6 +40,13 @@ namespace AlDarb.DataAccess.EFCore
             modelBuilder.ApplyConfiguration(new UserClaimConfig());
             modelBuilder.ApplyConfiguration(new UserPhotoConfig());
             modelBuilder.ApplyConfiguration(new SettingsConfig());
+
+            modelBuilder.ApplyConfiguration(new CourseConfig());
+            modelBuilder.ApplyConfiguration(new CourseSessionConfig());
+            modelBuilder.ApplyConfiguration(new CourseTaskConfig());
+            modelBuilder.ApplyConfiguration(new ProgressTaskConfig());
+            modelBuilder.ApplyConfiguration(new ApplicationForSessionConfig());
+            modelBuilder.ApplyConfiguration(new NotificationConfig());
 
             modelBuilder.HasDefaultSchema("starter_core");
         }
