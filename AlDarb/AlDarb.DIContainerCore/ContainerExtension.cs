@@ -10,6 +10,9 @@ using AlDarb.DataAccess.EFCore;
 using AlDarb.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using AlDarb.Services.Infrastructure.Services;
+using AlDarb.Services.Infrastructure.Repositories;
+using AlDarb.DataAccess.EFCore.Repositories;
 
 namespace AlDarb.DIContainerCore
 {
@@ -23,13 +26,39 @@ namespace AlDarb.DIContainerCore
 
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<ISettingsRepository, SettingsRepository>();
+
             services.AddTransient<IUserPhotoRepository, UserPhotoRepository>();
+
             services.AddTransient<IUserService, UserService<User>>();
             services.AddTransient<IUserRepository<User>, UserRepository>();
+
             services.AddTransient<IIdentityUserRepository<User>, IdentityUserRepository>();
+
             services.AddTransient<IRoleRepository<Role>, RoleRepository>();
+
             services.AddTransient<IUserRoleRepository<UserRole>, UserRoleRepository>();
+
             services.AddTransient<IUserClaimRepository<UserClaim>, UserClaimRepository>();
+
+            
+            
+            services.AddTransient<ICourseService, CourseService<Course>>();
+            services.AddTransient<ICourseRepository<Course>, CourseRepository>();
+
+            services.AddTransient<ICourseSessionService, CourseSessionService<CourseSession>>();
+            services.AddTransient<ICourseSessionRepository<CourseSession>, CourseSessionRepository>();
+
+            services.AddTransient<ICourseTaskService, CourseTaskService<CourseTask>>();
+            services.AddTransient<ICourseTaskRepository<CourseTask>, CourseTaskRepository>();
+
+            services.AddTransient<IProgressTaskService, ProgressTaskService<ProgressTask>>();
+            services.AddTransient<IProgressTaskRepository<ProgressTask>, ProgressTaskRepository>();
+
+            services.AddTransient<IApplicationForSessionService, ApplicationForSessionService<ApplicationForSession>>();
+            services.AddTransient<IApplicationForSessionRepository<ApplicationForSession>, ApplicationForSessionRepository>();
+
+            services.AddTransient<INotificationService, NotificationService<Notification>>();
+            services.AddTransient<INotificationRepository<Notification>, NotificationRepository>();
         }
     }
 }
