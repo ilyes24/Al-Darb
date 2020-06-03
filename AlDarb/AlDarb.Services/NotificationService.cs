@@ -5,6 +5,7 @@ using AlDarb.Services.Infrastructure.Repositories;
 using AlDarb.Services.Infrastructure.Services;
 using AlDarb.Utils;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AlDarb.Services
@@ -15,6 +16,12 @@ namespace AlDarb.Services
         public NotificationService(ICurrentContextProvider contextProvider, INotificationRepository<TNotification> notificationRepository) : base(contextProvider)
         {
             this.notificationRepository = notificationRepository;
+        }
+
+        public async Task<IEnumerable<NotificationDTO>> GetList(bool includeDeleted = false)
+        {
+            var entitiy = await notificationRepository.GetList(Session, includeDeleted);
+            return entitiy.MapTo<IEnumerable<NotificationDTO>>();
         }
 
         public async Task<bool> Delete(int id)

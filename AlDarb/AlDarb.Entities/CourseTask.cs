@@ -1,4 +1,7 @@
-﻿namespace AlDarb.Entities
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace AlDarb.Entities
 {
     public class CourseTask : DeletableEntity
     {
@@ -7,6 +10,10 @@
         public string Duration { get; set; }
         public string Difficulty { get; set; }
 
+        public int CourseId { get; set; }
+
         public virtual Course Course { get; set; }
+
+        public virtual ICollection<ProgressTask> ProgressTasks { get; set; }
     }
 }

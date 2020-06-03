@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
+    <PackageReference Include="System.Linq" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AlDarb.Services.Infrastructure\AlDarb.Services.Infrastructure.csproj" ReferenceOutputAssembly="true" />
     <ProjectReference Include="..\AlDarb.Utils\AlDarb.Utils.csproj" ReferenceOutputAssembly="true" />
   </ItemGroup>

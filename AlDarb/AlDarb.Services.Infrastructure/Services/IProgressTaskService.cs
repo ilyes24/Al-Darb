@@ -8,6 +8,7 @@ namespace AlDarb.Services.Infrastructure.Services
 {
     public interface IProgressTaskService
     {
+        Task<IEnumerable<ProgressTaskDTO>> GetList(bool includeDeleted = false);
         Task<ProgressTaskDTO> GetById(int id, bool includeDeleted = false);
         Task<ProgressTaskDTO> GetByUserId(int userId, bool includeDeleted = false);
         Task<ProgressTaskDTO> GetByTaskId(int taskId, bool includeDeleted = false);

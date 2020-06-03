@@ -22,11 +22,21 @@ namespace AlDarb.DataAccess.EFCore.Configuration.System
             builder.Property(obj => obj.Description).IsRequired();
             builder.Property(obj => obj.IsDeleted).HasDefaultValue(false);
 
+            builder.Ignore(x => x.User);
+
             builder
-                .HasOne(obj => obj.User)
+                .HasMany(obj => obj.CourseSessions)
                 .WithOne()
-                .HasForeignKey<User>(obj => obj.Id)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(obj => obj.CourseId)
+                .OnDelete(DeleteBehavior.NoAction)
+                .IsRequired();
+
+            builder
+                .HasMany(obj => obj.CourseTasks)
+                .WithOne()
+                .HasForeignKey(obj => obj.CourseId)
+                .OnDelete(DeleteBehavior.NoAction)
+                .IsRequired();
         }
     }
 }

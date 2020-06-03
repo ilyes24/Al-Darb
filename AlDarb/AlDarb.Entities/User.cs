@@ -30,5 +30,9 @@ namespace AlDarb.Entities
 
         public virtual ICollection<UserRole> UserRoles { get; set; }
         public virtual ICollection<UserClaim> Claims { get; set; }
+        public virtual ICollection<Course> Courses { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
+        public virtual ICollection<ProgressTask> ProgressTasks { get; set; }
+        public virtual ICollection<ApplicationForSession> ApplicationForSessions { get; set; }
     }
 }

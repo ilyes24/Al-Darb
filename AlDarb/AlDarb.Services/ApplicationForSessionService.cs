@@ -5,6 +5,7 @@ using AlDarb.Services.Infrastructure.Repositories;
 using AlDarb.Services.Infrastructure.Services;
 using AlDarb.Utils;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AlDarb.Services
@@ -15,6 +16,12 @@ namespace AlDarb.Services
         public ApplicationForSessionService(ICurrentContextProvider contextProvider, IApplicationForSessionRepository<TApplicationForSession> applicationForSessionRepository) : base(contextProvider)
         {
             this.applicationForSessionRepository = applicationForSessionRepository;
+        }
+
+        public async Task<IEnumerable<ApplicationForSessionDTO>> GetList(bool includeDeleted = false)
+        {
+            var entitiy = await applicationForSessionRepository.GetList(Session, includeDeleted);
+            return  entitiy.MapTo<IEnumerable<ApplicationForSessionDTO>>();
         }
 
         public async Task<bool> Delete(int id)

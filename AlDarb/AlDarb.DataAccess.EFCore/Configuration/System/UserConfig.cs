@@ -58,6 +58,34 @@ namespace AlDarb.DataAccess.EFCore.Configuration.System
                 .WithOne()
                 .HasForeignKey(obj => obj.UserId)
                 .IsRequired();
+
+            builder
+                .HasMany(obj => obj.Courses)
+                .WithOne()
+                .HasForeignKey(obj => obj.UserId)
+                .OnDelete(DeleteBehavior.NoAction)
+                .IsRequired();
+
+            builder
+                .HasMany(obj => obj.Notifications)
+                .WithOne()
+                .HasForeignKey(obj => obj.UserId)
+                .OnDelete(DeleteBehavior.NoAction)
+                .IsRequired();
+
+            builder
+                .HasMany(obj => obj.ProgressTasks)
+                .WithOne()
+                .HasForeignKey(obj => obj.UserId)
+                .OnDelete(DeleteBehavior.NoAction)
+                .IsRequired();
+
+            builder
+                .HasMany(obj => obj.ApplicationForSessions)
+                .WithOne()
+                .HasForeignKey(obj => obj.UserId)
+                .OnDelete(DeleteBehavior.NoAction)
+                .IsRequired();
         }
     }
 }

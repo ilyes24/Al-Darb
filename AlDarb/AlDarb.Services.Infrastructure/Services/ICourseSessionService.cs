@@ -8,6 +8,7 @@ namespace AlDarb.Services.Infrastructure.Services
 {
     public interface ICourseSessionService
     {
+        Task<IEnumerable<CourseSessionDTO>> GetList(bool includeDeleted = false);
         Task<CourseSessionDTO> GetById(int id, bool includeDeleted = false);
         Task<CourseSessionDTO> GetByCourseId(int courseId, bool includeDeleted = false);
         Task<CourseSessionDTO> GetByStartDate(DateTime startDate, bool includeDeleted = false);

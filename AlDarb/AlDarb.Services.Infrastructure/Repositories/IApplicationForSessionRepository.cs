@@ -8,6 +8,7 @@ namespace AlDarb.Services.Infrastructure.Repositories
 {
     public interface IApplicationForSessionRepository<TApplicationForSession> where TApplicationForSession : ApplicationForSession
     {
+        Task<IEnumerable<TApplicationForSession>> GetList(ContextSession session, bool includeDeleted = false);
         Task Delete(int id, ContextSession session);
         Task<TApplicationForSession> GetByApplicationDate(DateTime applicationDate, ContextSession session, bool includeDeleted = false);
         Task<TApplicationForSession> GetByUserId(int userId, ContextSession session, bool includeDeleted = false);

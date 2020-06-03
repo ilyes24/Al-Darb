@@ -23,11 +23,14 @@ namespace AlDarb.DataAccess.EFCore.Configuration.System
             builder.Property(obj => obj.Difficulty).IsRequired();
             builder.Property(obj => obj.IsDeleted).HasDefaultValue(false);
 
+            builder.Ignore(x => x.Course);
+
             builder
-                .HasOne(obj => obj.Course)
+                .HasMany(obj => obj.ProgressTasks)
                 .WithOne()
-                .HasForeignKey<Course>(obj => obj.Id)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(obj => obj.CourseTaskId)
+                .OnDelete(DeleteBehavior.NoAction)
+                .IsRequired();
         }
     }
 }

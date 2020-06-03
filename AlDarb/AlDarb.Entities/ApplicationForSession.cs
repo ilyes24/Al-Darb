@@ -8,6 +8,9 @@ namespace AlDarb.Entities
         public bool? Status { get; set; }
         public DateTime? AcceptedDate { get; set; }
 
+        public int UserId { get; set; }
+        public int CourseSessionId { get; set; }
+
         public virtual User User { get; set; }
         public virtual CourseSession CourseSession { get; set; }
     }

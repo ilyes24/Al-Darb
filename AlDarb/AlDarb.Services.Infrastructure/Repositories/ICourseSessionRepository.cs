@@ -8,6 +8,7 @@ namespace AlDarb.Services.Infrastructure.Repositories
 {
     public interface ICourseSessionRepository<TCourseSession> where TCourseSession : CourseSession
     {
+        Task<IEnumerable<TCourseSession>> GetList(ContextSession session, bool includeDeleted = false);
         Task Delete(int id, ContextSession session);
         Task<TCourseSession> GetByStartDate(DateTime startDate, ContextSession session, bool includeDeleted = false);
         Task<TCourseSession> GetByEndDate(DateTime endDate, ContextSession session, bool includeDeleted = false);

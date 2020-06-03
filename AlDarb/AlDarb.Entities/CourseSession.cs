@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AlDarb.Entities
 {
@@ -7,6 +8,11 @@ namespace AlDarb.Entities
         public int Capacity { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; private set; }
+
+        public int CourseId { get; set; }
+
         public virtual Course Course { get; set; }
+
+        public virtual ICollection<ApplicationForSession> ApplicationForSessions { get; set; }
     }
 }

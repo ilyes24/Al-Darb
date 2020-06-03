@@ -22,11 +22,7 @@ namespace AlDarb.DataAccess.EFCore.Configuration.System
             builder.Property(obj => obj.RedirectUrl).IsRequired();
             builder.Property(obj => obj.IsDeleted).HasDefaultValue(false);
 
-            builder
-                .HasOne(obj => obj.User)
-                .WithOne()
-                .HasForeignKey<User>(obj => obj.Id)
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.Ignore(x => x.User);
         }
     }
 }

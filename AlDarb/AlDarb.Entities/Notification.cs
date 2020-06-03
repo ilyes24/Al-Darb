@@ -8,6 +8,8 @@ namespace AlDarb.Entities
         public string Description { get; set; }
         public string RedirectUrl { get; set; }
 
+        public int UserId { get; set; }
+
         public virtual User User { get; set; }
     }
 }
