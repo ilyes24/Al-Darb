@@ -18,9 +18,9 @@ namespace AlDarb.Services
             this.applicationForSessionRepository = applicationForSessionRepository;
         }
 
-        public async Task<IEnumerable<ApplicationForSessionDTO>> GetList(bool includeDeleted = false)
+        public async Task<IEnumerable<ApplicationForSessionDTO>> GetList(int? userId, int? sessionId, DateTime? date, bool includeDeleted = false)
         {
-            var entitiy = await applicationForSessionRepository.GetList(Session, includeDeleted);
+            var entitiy = await applicationForSessionRepository.GetList(userId, sessionId, date, Session, includeDeleted);
             return  entitiy.MapTo<IEnumerable<ApplicationForSessionDTO>>();
         }
 
