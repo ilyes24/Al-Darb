@@ -28,5 +28,18 @@ namespace AlDarb.DataAccess.EFCore.Repositories
                 .Where(obj => obj.User.Id == userId)
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<Course>> GetList(int? userId, string name, ContextSession session, bool includeDeleted = false)
+        {
+            var entity = GetEntities(session, includeDeleted).AsQueryable();
+
+            if (userId != null)
+                entity = entity.Where(obj => obj.UserId == userId);
+
+            if (!String.IsNullOrEmpty(name))
+                entity = entity.Where(obj => obj.Name == name);
+
+            return await entity.Where(obj => obj.Id > 0).ToListAsync();
+        }
     }
 }

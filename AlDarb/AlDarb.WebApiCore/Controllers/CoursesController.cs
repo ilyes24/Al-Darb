@@ -20,9 +20,9 @@ namespace AlDarb.WebApiCore.Controllers
 
         // GET: api/Courses
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CourseDTO>>> GetCourse(bool includeDeleted)
+        public async Task<ActionResult<IEnumerable<CourseDTO>>> GetCourse([FromQuery] int? userId, [FromQuery] string name, bool includeDeleted)
         {
-            var coursesDto = await courseService.GetList(includeDeleted);
+            var coursesDto = await courseService.GetList(userId, name, includeDeleted);
             return Ok(coursesDto);
         }
 
