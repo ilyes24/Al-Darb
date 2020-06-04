@@ -1,9 +1,9 @@
-﻿using AlDarb.DTO;
-using AlDarb.Services.Infrastructure.Services;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using AlDarb.Services.Infrastructure.Services;
+using AlDarb.DTO;
+using System;
 
 namespace AlDarb.WebApiCore.Controllers
 {
@@ -12,20 +12,20 @@ namespace AlDarb.WebApiCore.Controllers
     {
         private readonly ICourseSessionService courseSessionService;
 
-        public CourseSessionsController (ICourseSessionService courseSessionService)
+        public CourseSessionsController(ICourseSessionService courseSessionService)
         {
             this.courseSessionService = courseSessionService;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CourseSessionDTO>>> GetCourseSession(bool includeDeleted = false)
+        public async Task<ActionResult<IEnumerable<CourseSessionDTO>>> GetCourseSessions([FromQuery] int? courseId, [FromQuery] DateTime? startDate, [FromQuery] DateTime? endDate, bool includeDeleted = false)
         {
-            var courseSessionsDto = await courseSessionService.GetList(includeDeleted);
+            var courseSessionsDto = await courseSessionService.GetList(courseId, startDate, endDate, includeDeleted);
             return Ok(courseSessionsDto);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CourseSessionDTO>> GetCourse(int id, bool includeDeleted)
+        public async Task<ActionResult<CourseSessionDTO>> GetCourseSession(int id, bool includeDeleted)
         {
             var courseSession = await courseSessionService.GetById(id, includeDeleted);
 
@@ -36,6 +36,7 @@ namespace AlDarb.WebApiCore.Controllers
 
             return Ok(courseSession);
         }
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCourse(CourseSessionDTO courseSessionDto)

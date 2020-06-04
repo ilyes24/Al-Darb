@@ -18,12 +18,6 @@ namespace AlDarb.Services
             this.courseSessionRepository = courseSessionRepository;
         }
 
-        public async Task<IEnumerable<CourseSessionDTO>> GetList(bool includeDeleted = false)
-        {
-            var entitiy = await courseSessionRepository.GetList(Session, includeDeleted);
-            return entitiy.MapTo<IEnumerable<CourseSessionDTO>>();
-        }
-
         public async Task<bool> Delete(int id)
         {
             await courseSessionRepository.Delete(id, Session);
@@ -37,16 +31,16 @@ namespace AlDarb.Services
             return courseSession.MapTo<CourseSessionDTO>();
         }
 
-        public async Task<CourseSessionDTO> GetByCourseId(int courseId, bool includeDeleted = false)
+        public async Task<IEnumerable<CourseSessionDTO>> GetByCourseId(int courseId, bool includeDeleted = false)
         {
-            var courseSession = await courseSessionRepository.GetByCourseId(courseId, Session, includeDeleted);
-            return courseSession.MapTo<CourseSessionDTO>();
+            var entitiy = await courseSessionRepository.GetByCourseId(courseId, Session, includeDeleted);
+            return entitiy.MapTo<IEnumerable<CourseSessionDTO>>();
         }
 
-        public async Task<CourseSessionDTO> GetByEndDate(DateTime endDate, bool includeDeleted = false)
+        public async Task<IEnumerable<CourseSessionDTO>> GetByEndDate(DateTime endDate, bool includeDeleted = false)
         {
-            var courseSession = await courseSessionRepository.GetByEndDate(endDate, Session, includeDeleted);
-            return courseSession.MapTo<CourseSessionDTO>();
+            var entitiy = await courseSessionRepository.GetByEndDate(endDate, Session, includeDeleted);
+            return entitiy.MapTo<IEnumerable<CourseSessionDTO>>();
         }
 
         public async Task<CourseSessionDTO> GetById(int id, bool includeDeleted = false)
@@ -55,10 +49,16 @@ namespace AlDarb.Services
             return courseSession.MapTo<CourseSessionDTO>();
         }
 
-        public async Task<CourseSessionDTO> GetByStartDate(DateTime startDate, bool includeDeleted = false)
+        public async Task<IEnumerable<CourseSessionDTO>> GetByStartDate(DateTime startDate, bool includeDeleted = false)
         {
-            var courseSession = await courseSessionRepository.GetByStartDate(startDate, Session, includeDeleted);
-            return courseSession.MapTo<CourseSessionDTO>();
+            var entitiy = await courseSessionRepository.GetByStartDate(startDate, Session, includeDeleted);
+            return entitiy.MapTo<IEnumerable<CourseSessionDTO>>();
+        }
+
+        public async Task<IEnumerable<CourseSessionDTO>> GetList(int? courseId, DateTime? startDate, DateTime? endDate, bool includeDeleted = false)
+        {
+            var entity = await courseSessionRepository.GetList(courseId, startDate, endDate, Session, includeDeleted);
+            return entity.MapTo<IEnumerable<CourseSessionDTO>>();
         }
     }
 }
