@@ -46,16 +46,16 @@ namespace AlDarb.Services
             return course.MapTo<CourseDTO>();
         }
 
-        public async Task<CourseDTO> GetByName(string name, bool includeDeleted = false)
+        public async Task<IEnumerable<CourseDTO>> GetByName(string name, bool includeDeleted = false)
         {
             var course = await courseRepository.GetByName(name, Session, includeDeleted);
-            return course.MapTo<CourseDTO>();
+            return course.MapTo<IEnumerable<CourseDTO>>();
         }
 
-        public async Task<CourseDTO> GetByUserId(int userId, bool includeDeleted = false)
+        public async Task<IEnumerable<CourseDTO>> GetByUserId(int userId, bool includeDeleted = false)
         {
             var course = await courseRepository.GetByUserId(userId, Session, includeDeleted);
-            return course.MapTo<CourseDTO>();
+            return course.MapTo<IEnumerable<CourseDTO>>();
         }
     }
 }

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using AlDarb.DataAccess.EFCore;
 using AlDarb.Entities;
 using AlDarb.Services.Infrastructure.Services;
 using AlDarb.DTO;
@@ -33,9 +28,35 @@ namespace AlDarb.WebApiCore.Controllers
 
         // GET: api/Courses/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Course>> GetCourse(int id, bool includeDeleted)
+        public async Task<ActionResult<CourseDTO>> GetCourse(int id, bool includeDeleted)
         {
             var course = await courseService.GetById(id, includeDeleted);
+
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(course);
+        }
+
+        [HttpGet("ByUserId/{id}")]
+        public async Task<ActionResult<IEnumerable<CourseDTO>>> GetCoursesByUserId(int id, bool includeDeleted)
+        {
+            var course = await courseService.GetByUserId(id, includeDeleted);
+
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(course);
+        }
+
+        [HttpGet("ByName/{name}")]
+        public async Task<ActionResult<IEnumerable<CourseDTO>>> GetCoursesByName(string name, bool includeDeleted)
+        {
+            var course = await courseService.GetByName(name, includeDeleted);
 
             if (course == null)
             {

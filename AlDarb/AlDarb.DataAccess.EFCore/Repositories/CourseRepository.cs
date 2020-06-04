@@ -15,18 +15,18 @@ namespace AlDarb.DataAccess.EFCore.Repositories
         {
         }
 
-        public async Task<Course> GetByName(string name, ContextSession session, bool includeDeleted = false)
+        public async Task<IEnumerable<Course>> GetByName(string name, ContextSession session, bool includeDeleted = false)
         {
             return await GetEntities(session, includeDeleted)
                 .Where(obj => obj.Name == name)
-                .FirstOrDefaultAsync();
+                .ToListAsync();
         }
 
-        public async Task<Course> GetByUserId(int userId, ContextSession session, bool includeDeleted = false)
+        public async Task<IEnumerable<Course>> GetByUserId(int userId, ContextSession session, bool includeDeleted = false)
         {
             return await GetEntities(session, includeDeleted)
                 .Where(obj => obj.User.Id == userId)
-                .FirstOrDefaultAsync();
+                .ToListAsync();
         }
     }
 }
