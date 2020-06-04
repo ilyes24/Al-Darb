@@ -18,9 +18,9 @@ namespace AlDarb.Services
             this.notificationRepository = notificationRepository;
         }
 
-        public async Task<IEnumerable<NotificationDTO>> GetList(bool includeDeleted = false)
+        public async Task<IEnumerable<NotificationDTO>> GetList(int? userId, DateTime? date, bool includeDeleted = false)
         {
-            var entitiy = await notificationRepository.GetList(Session, includeDeleted);
+            var entitiy = await notificationRepository.GetList(userId, date, Session, includeDeleted);
             return entitiy.MapTo<IEnumerable<NotificationDTO>>();
         }
 
