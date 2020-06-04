@@ -7,7 +7,7 @@ using System;
 
 namespace AlDarb.WebApiCore.Controllers
 {
-    [Route("[controller}")]
+    [Route("[controller]")]
     public class CourseSessionsController : BaseApiController
     {
         private readonly ICourseSessionService courseSessionService;
@@ -39,7 +39,7 @@ namespace AlDarb.WebApiCore.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCourse(CourseSessionDTO courseSessionDto)
+        public async Task<IActionResult> PutCourseSession(CourseSessionDTO courseSessionDto)
         {
             var courseSession = await courseSessionService.Edit(courseSessionDto);
 
@@ -50,7 +50,7 @@ namespace AlDarb.WebApiCore.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CourseSessionDTO>> PostCourse(CourseSessionDTO courseSessionDTO)
+        public async Task<ActionResult<CourseSessionDTO>> PostCourseSession(CourseSessionDTO courseSessionDTO)
         {
             var courseSession = await courseSessionService.Edit(courseSessionDTO);
 
@@ -61,7 +61,7 @@ namespace AlDarb.WebApiCore.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteCourse(int id)
+        public async Task<ActionResult> DeleteCourseSession(int id)
         {
             var deleted = await courseSessionService.Delete(id);
 
