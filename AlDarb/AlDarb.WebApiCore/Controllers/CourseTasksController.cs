@@ -7,7 +7,7 @@ using System;
 
 namespace AlDarb.WebApiCore.Controllers
 {
-    [Route("[controller}")]
+    [Route("[controller]")]
     public class CourseTasksController : BaseApiController
     {
         private readonly ICourseTaskService courseTaskService;
