@@ -40,32 +40,6 @@ namespace AlDarb.WebApiCore.Controllers
             return Ok(course);
         }
 
-        [HttpGet("ByUserId/{id}")]
-        public async Task<ActionResult<IEnumerable<CourseDTO>>> GetCoursesByUserId(int id, bool includeDeleted)
-        {
-            var course = await courseService.GetByUserId(id, includeDeleted);
-
-            if (course == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(course);
-        }
-
-        [HttpGet("ByName/{name}")]
-        public async Task<ActionResult<IEnumerable<CourseDTO>>> GetCoursesByName(string name, bool includeDeleted)
-        {
-            var course = await courseService.GetByName(name, includeDeleted);
-
-            if (course == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(course);
-        }
-
         // PUT: api/Courses/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
