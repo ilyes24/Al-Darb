@@ -3,6 +3,7 @@ using AlDarb.Services.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace AlDarb.DataAccess.EFCore.Repositories
 {
@@ -24,6 +25,19 @@ namespace AlDarb.DataAccess.EFCore.Repositories
             return await GetEntities(session, includeDeleted)
                 .Where(obj => obj.User.Id == userId)
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<ProgressTask>> GetList(int? taskId, int? userId, ContextSession session, bool includeDeleted = false)
+        {
+            var entity = GetEntities(session, includeDeleted).AsQueryable();
+
+            if (taskId != null)
+                entity = entity.Where(obj => obj.CourseTaskId == taskId);
+
+            if (userId != null)
+                entity = entity.Where(obj => obj.UserId == userId);
+
+            return await entity.Where(obj => obj.Id > 0).ToListAsync();
         }
     }
 }

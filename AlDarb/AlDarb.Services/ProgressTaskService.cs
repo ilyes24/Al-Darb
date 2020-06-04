@@ -19,9 +19,9 @@ namespace AlDarb.Services
             this.progressTaskRepository = progressTaskRepository;
         }
 
-        public async Task<IEnumerable<ProgressTaskDTO>> GetList(bool includeDeleted = false)
+        public async Task<IEnumerable<ProgressTaskDTO>> GetList(int? taskId, int? userId, bool includeDeleted = false)
         {
-            var entitiy = await progressTaskRepository.GetList(Session, includeDeleted);
+            var entitiy = await progressTaskRepository.GetList(taskId, userId, Session, includeDeleted);
             return entitiy.MapTo<IEnumerable<ProgressTaskDTO>>();
         }
 
