@@ -17,9 +17,9 @@ namespace AlDarb.Services
             this.courseTaskRepository = courseTaskRepository;
         }
 
-        public async Task<IEnumerable<CourseTaskDTO>> GetList(bool includeDeleted = false)
+        public async Task<IEnumerable<CourseTaskDTO>> GetList(int? courseId, string title, bool includeDeleted = false)
         {
-            var entitiy = await courseTaskRepository.GetList(Session, includeDeleted);
+            var entitiy = await courseTaskRepository.GetList(courseId, title, Session, includeDeleted);
             return entitiy.MapTo<IEnumerable<CourseTaskDTO>>();
         }
 

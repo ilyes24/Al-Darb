@@ -18,9 +18,9 @@ namespace AlDarb.WebApiCore.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CourseTaskDTO>>> GetCourseTasks([FromQuery] int? courseId, [FromQuery] DateTime? startDate, [FromQuery] DateTime? endDate, bool includeDeleted = false)
+        public async Task<ActionResult<IEnumerable<CourseTaskDTO>>> GetCourseTasks([FromQuery] int? courseId, [FromQuery] string title, bool includeDeleted = false)
         {
-            var courseTasksDto = await courseTaskService.GetList(courseId, startDate, endDate, includeDeleted);
+            var courseTasksDto = await courseTaskService.GetList(courseId, title, includeDeleted);
             return Ok(courseTasksDto);
         }
 

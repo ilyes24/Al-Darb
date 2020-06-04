@@ -8,7 +8,7 @@ namespace AlDarb.Services.Infrastructure.Repositories
 {
     public interface ICourseTaskRepository<TCourseTask> where TCourseTask : CourseTask
     {
-        Task<IEnumerable<TCourseTask>> GetList(ContextSession session, bool includeDeleted = false);
+        Task<IEnumerable<TCourseTask>> GetList(int? courseId, string title, ContextSession session, bool includeDeleted = false);
         Task Delete(int id, ContextSession session);
         Task<TCourseTask> GetByCourseId(int courseId, ContextSession session, bool includeDeleted = false);
         Task<TCourseTask> GetByTitle(string title, ContextSession session, bool includeDeleted = false);
