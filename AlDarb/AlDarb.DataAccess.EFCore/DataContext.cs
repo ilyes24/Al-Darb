@@ -37,7 +37,6 @@ namespace AlDarb.DataAccess.EFCore
             modelBuilder.ApplyConfiguration(new RoleConfig());
             modelBuilder.ApplyConfiguration(new UserRoleConfig());
             modelBuilder.ApplyConfiguration(new UserClaimConfig());
-            modelBuilder.ApplyConfiguration(new UserPhotoConfig());
             modelBuilder.ApplyConfiguration(new SettingsConfig());
 
             modelBuilder.ApplyConfiguration(new CourseConfig());

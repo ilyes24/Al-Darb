@@ -15,6 +15,5 @@ namespace AlDarb.Services.Infrastructure
         Task<UserDTO> GetByLogin(string login, bool includeDeleted = false);
         Task<bool> Delete(int id);
         Task<UserDTO> Edit(UserDTO dto);
-        Task<byte[]> GetUserPhoto(int userId);
     }
 }

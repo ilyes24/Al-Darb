@@ -110,14 +110,14 @@ namespace AlDarb.WebApiCore.Controllers
                return Unauthorized();
            }
 
-            var photoContent = await userService.GetUserPhoto(userId);
-            
+            var photoContent = (await userService.GetById(userId)).PhotoUrl;
+
             if (photoContent == null)
             {
                 return NoContent();
             }
 
-            return File(photoContent, contentType: "image/png");
+            return Ok(photoContent);
         }
 
 
