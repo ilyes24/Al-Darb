@@ -27,8 +27,6 @@ namespace AlDarb.DIContainerCore
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<ISettingsRepository, SettingsRepository>();
 
-            services.AddTransient<IUserPhotoRepository, UserPhotoRepository>();
-
             services.AddTransient<IUserService, UserService<User>>();
             services.AddTransient<IUserRepository<User>, UserRepository>();
 

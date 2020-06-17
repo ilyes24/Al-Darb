@@ -19,7 +19,6 @@ namespace AlDarb.DataAccess.EFCore
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<UserClaim> UserClaims { get; set; }
-        public DbSet<UserPhoto> UserPhotos { get; set; }
         public DbSet<Settings> Settings { get; set; }
 
         public DbSet<Course> Course { get; set; }

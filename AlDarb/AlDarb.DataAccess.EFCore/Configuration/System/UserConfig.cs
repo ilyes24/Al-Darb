@@ -35,11 +35,7 @@ namespace AlDarb.DataAccess.EFCore.Configuration.System
             builder.Property(obj => obj.AddressLat).HasColumnName("Lat");
             builder.Property(obj => obj.AddressLng).HasColumnName("Lng");
 
-            builder
-                .HasOne(obj => obj.Photo)
-                .WithOne(obj => obj.User)
-                .HasForeignKey<UserPhoto>(obj => obj.Id)
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.Property(obj => obj.PhotoUrl).HasDefaultValue("https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png");
 
             builder
                 .HasOne(obj => obj.Settings)

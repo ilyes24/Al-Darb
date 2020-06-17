@@ -25,7 +25,8 @@ namespace AlDarb.Entities
         public double? AddressLat { get; set; }
         public double? AddressLng { get; set; }
 
-        public virtual UserPhoto Photo { get; set; }
+        public string PhotoUrl { get; set; }
+
         public virtual Settings Settings { get; set; }
 
         public virtual ICollection<UserRole> UserRoles { get; set; }

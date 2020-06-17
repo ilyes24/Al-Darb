@@ -15,13 +15,10 @@ namespace AlDarb.Services
     public class UserService<TUser> : BaseService, IUserService where TUser : User, new()
     {
         protected readonly IUserRepository<TUser> userRepository;
-        protected readonly IUserPhotoRepository userPhotoRepository;
 
-        public UserService(ICurrentContextProvider contextProvider, IUserRepository<TUser> userRepository,
-            IUserPhotoRepository userPhotoRepository) : base(contextProvider)
+        public UserService(ICurrentContextProvider contextProvider, IUserRepository<TUser> userRepository) : base(contextProvider)
         {
             this.userRepository = userRepository;
-            this.userPhotoRepository = userPhotoRepository;
         }
 
         public async Task<bool> Delete(int id)
@@ -35,12 +32,6 @@ namespace AlDarb.Services
             var user = dto.MapTo<TUser>();
             await userRepository.Edit(user, Session);
             return user.MapTo<UserDTO>();
-        }
-
-        public async Task<byte[]> GetUserPhoto(int userId)
-        {
-            var photoContent = await userPhotoRepository.Get(userId, Session);
-            return photoContent?.Image;
         }
 
         public async Task<UserDTO> GetById(int id, bool includeDeleted = false)
