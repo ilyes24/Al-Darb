@@ -8,6 +8,7 @@ namespace AlDarb.Entities
         public string Name { get; set; }
         public int Duration { get; set; }
         public string Description { get; set; }
+        public string PictureUrl { get; set; }
 
         public int UserId { get; set; }
 
