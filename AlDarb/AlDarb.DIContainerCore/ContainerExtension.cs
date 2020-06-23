@@ -43,6 +43,9 @@ namespace AlDarb.DIContainerCore
             services.AddTransient<ICourseService, CourseService<Course>>();
             services.AddTransient<ICourseRepository<Course>, CourseRepository>();
 
+            services.AddTransient<ICourseRatingService, CourseRatingService<CourseRating>>();
+            services.AddTransient<ICourseRatingRepository<CourseRating>, CourseRatingRepository>();
+
             services.AddTransient<ICourseSessionService, CourseSessionService<CourseSession>>();
             services.AddTransient<ICourseSessionRepository<CourseSession>, CourseSessionRepository>();
 
