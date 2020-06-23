@@ -10,5 +10,6 @@ namespace AlDarb.Services.Infrastructure.Services
         Task<CourseRatingDTO> GetById(int id, bool includeDeleted = false);
         Task<bool> Delete(int id);
         Task<CourseRatingDTO> Edit(CourseRatingDTO dto);
+        Task<bool> UpdateCourse(int courseId);
     }
 }

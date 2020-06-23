@@ -66,6 +66,8 @@ namespace AlDarb.WebApiCore.Controllers
             if (courseRating == null)
                 return BadRequest();
 
+            var courseUpdated = await courseRatingService.UpdateCourse(courseRating.CourseId);
+
             return Ok(courseRating);
         }
 

@@ -10,5 +10,6 @@ namespace AlDarb.Services.Infrastructure.Repositories
         Task Delete(int id, ContextSession session);
         Task<TCourseRating> Get(int id, ContextSession session, bool includeDeleted = false);
         Task<TCourseRating> Edit(TCourseRating courseRating, ContextSession session);
+        Task<bool> UpdateCourse(int courseId, ContextSession session);
     }
 }

@@ -43,5 +43,11 @@ namespace AlDarb.Services
             var courseRating = await courseRatingRepository.Get(id, Session, includeDeleted);
             return courseRating.MapTo<CourseRatingDTO>();
         }
+
+        public async Task<bool> UpdateCourse(int courseId)
+        {
+            await courseRatingRepository.UpdateCourse(courseId, Session);
+            return true;
+        }
     }
 }

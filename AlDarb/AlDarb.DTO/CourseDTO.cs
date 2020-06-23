@@ -11,6 +11,8 @@ namespace AlDarb.DTO
         public int Duration { get; set; }
         public string Description { get; set; }
         public string PictureUrl { get; set; }
+        public int AvgRating { get; set; }
+        public int SumRating { get; set; }
         public int UserId { get; set; }
     }
 }
