@@ -22,6 +22,7 @@ namespace AlDarb.DataAccess.EFCore
         public DbSet<Settings> Settings { get; set; }
 
         public DbSet<Course> Course { get; set; }
+        public DbSet<Field> Field { get; set; }
         public DbSet<CourseRating> CourseRating { get; set; }
         public DbSet<CourseSession> CourseSession { get; set; }
         public DbSet<CourseTask> CourseTask { get; set; }
@@ -41,6 +42,7 @@ namespace AlDarb.DataAccess.EFCore
             modelBuilder.ApplyConfiguration(new SettingsConfig());
 
             modelBuilder.ApplyConfiguration(new CourseConfig());
+            modelBuilder.ApplyConfiguration(new FieldConfig());
             modelBuilder.ApplyConfiguration(new CourseRatingConfig());
             modelBuilder.ApplyConfiguration(new CourseSessionConfig());
             modelBuilder.ApplyConfiguration(new CourseTaskConfig());

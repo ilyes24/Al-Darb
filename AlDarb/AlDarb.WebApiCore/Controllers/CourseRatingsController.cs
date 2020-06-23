@@ -8,11 +8,11 @@ using AlDarb.DTO;
 namespace AlDarb.WebApiCore.Controllers
 {
     [Route("[controller]")]
-    public class CourseRatingController : BaseApiController
+    public class CourseRatingsController : BaseApiController
     {
         private readonly ICourseRatingService courseRatingService;
 
-        public CourseRatingController(ICourseRatingService courseRatingService)
+        public CourseRatingsController(ICourseRatingService courseRatingService)
         {
             this.courseRatingService = courseRatingService;
         }

@@ -26,6 +26,7 @@ namespace AlDarb.DataAccess.EFCore.Configuration.System
             builder.Property(obj => obj.SumRating).HasDefaultValue(0);
 
             builder.Ignore(x => x.User);
+            builder.Ignore(x => x.Field);
 
             builder
                 .HasMany(obj => obj.CourseSessions)
@@ -36,6 +37,13 @@ namespace AlDarb.DataAccess.EFCore.Configuration.System
 
             builder
                 .HasMany(obj => obj.CourseTasks)
+                .WithOne()
+                .HasForeignKey(obj => obj.CourseId)
+                .OnDelete(DeleteBehavior.NoAction)
+                .IsRequired();
+
+            builder
+                .HasMany(obj => obj.CourseRatings)
                 .WithOne()
                 .HasForeignKey(obj => obj.CourseId)
                 .OnDelete(DeleteBehavior.NoAction)
