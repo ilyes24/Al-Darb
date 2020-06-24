@@ -17,7 +17,7 @@ namespace AlDarb.DataAccess.EFCore.Configuration.System
         {
             base.Configure(builder);
 
-            builder.Property(obj => obj.name).IsRequired();
+            builder.Property(obj => obj.Name).IsRequired();
             builder.Property(obj => obj.IsDeleted).HasDefaultValue(false);
 
             builder
