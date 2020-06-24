@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AlDarb.Services.Infrastructure.MappingProfiles
 {
-    class FieldProfile : Profile
+    public class FieldProfile : Profile
     {
         public FieldProfile()
         {

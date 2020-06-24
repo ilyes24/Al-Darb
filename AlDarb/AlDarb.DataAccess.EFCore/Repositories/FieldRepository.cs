@@ -14,12 +14,5 @@ namespace AlDarb.DataAccess.EFCore.Repositories
         public FieldRepository(DataContext context) : base(context)
         {
         }
-
-        public async Task<IEnumerable<Field>> GetList(ContextSession session, bool includeDeleted = false)
-        {
-            var entity = GetEntities(session, includeDeleted).AsQueryable();
-
-            return await entity.Where(obj => obj.Id > 0).ToListAsync();
-        }
     }
 }
