@@ -15,6 +15,7 @@ namespace AlDarb.DTO
         public string Email { get; set; }
         public int? Age { get; set; }
         public string PhotoUrl { get; set; }
+        public string role { get; set; }
 
         public AddressDTO Address { get; set; }
 

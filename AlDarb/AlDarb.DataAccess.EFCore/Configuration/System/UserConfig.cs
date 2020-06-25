@@ -26,6 +26,7 @@ namespace AlDarb.DataAccess.EFCore.Configuration.System
             builder.Property(obj => obj.Password);
             builder.Property(obj => obj.Email).IsRequired();
             builder.Property(obj => obj.Age);
+            builder.Property(obj => obj.role).HasDefaultValue("user");
             builder.Property(obj => obj.IsDeleted).HasDefaultValue(false);
 
 

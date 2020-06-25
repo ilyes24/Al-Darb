@@ -26,6 +26,7 @@ namespace AlDarb.Entities
         public double? AddressLng { get; set; }
 
         public string PhotoUrl { get; set; }
+        public string role { get; set; }
 
         public virtual Settings Settings { get; set; }
 
