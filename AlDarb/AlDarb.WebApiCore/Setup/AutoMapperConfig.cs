@@ -17,8 +17,10 @@ namespace AlDarb.WebApiCore.Setup
 
             config.AddProfile<UserProfile>();
             config.AddProfile<SettingsProfile>();
+
             config.AddProfile<FieldProfile>();
             config.AddProfile<CourseProfile>();
+            config.AddProfile<CourseRatingProfile>();
             config.AddProfile<CourseSessionProfile>();
             config.AddProfile<CourseTaskProfile>();
             config.AddProfile<NotificationProfile>();
