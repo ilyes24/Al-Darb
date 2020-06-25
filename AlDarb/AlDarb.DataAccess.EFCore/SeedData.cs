@@ -19,7 +19,6 @@ namespace AlDarb.DataAccess.EFCore
             var currentDate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             var sqlCommand = new StringBuilder();
 
-
             //Roles
             sqlCommand.Append($"INSERT INTO [{schema}].[Roles] ([Name]) VALUES ('admin'), ('user')");
             sqlCommand.AppendLine();
