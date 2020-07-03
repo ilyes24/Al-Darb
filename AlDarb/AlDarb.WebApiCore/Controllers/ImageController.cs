@@ -9,7 +9,7 @@ namespace AlDarb.WebApiCore.Controllers
     [Route("[controller]")]
     public class ImageController : BaseApiController
     {
-        [HttpPost("uploadPhoto"), DisableRequestSizeLimit]
+        [HttpPost, DisableRequestSizeLimit]
         public async Task<ActionResult> UploadPhoto()
         {
             try

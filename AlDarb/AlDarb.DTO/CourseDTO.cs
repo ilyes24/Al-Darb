@@ -14,5 +14,6 @@ namespace AlDarb.DTO
         public int AvgRating { get; set; }
         public int SumRating { get; set; }
         public int UserId { get; set; }
+        public int FieldId { get; set; }
     }
 }

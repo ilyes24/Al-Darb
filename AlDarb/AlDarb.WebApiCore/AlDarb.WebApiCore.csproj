@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="Resources\Images\" />
     <Folder Include="Setup\" />
   </ItemGroup>
   <ItemGroup>

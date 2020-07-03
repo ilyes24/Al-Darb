@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AlDarb.Services.Infrastructure.Services;
 using AlDarb.DTO;
+using System;
 
 namespace AlDarb.WebApiCore.Controllers
 {
@@ -61,12 +62,19 @@ namespace AlDarb.WebApiCore.Controllers
         [HttpPost]
         public async Task<ActionResult<CourseDTO>> PostCourse(CourseDTO courseDto)
         {
-            var course = await courseService.Edit(courseDto);
+            try
+            {
+                var ilyes = courseDto;
+                int i = 10;
+                var course = await courseService.Edit(courseDto);
+                i = 20;
+                return Ok(course);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
             
-            if (course == null)
-                return BadRequest();
-
-            return Ok(course);
         }
 
         // DELETE: api/Courses/5
