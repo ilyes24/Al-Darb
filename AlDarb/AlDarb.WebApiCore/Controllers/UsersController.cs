@@ -28,7 +28,6 @@ namespace AlDarb.WebApiCore.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
-        [Authorize(Policy = "AdminOnly")]
         public async Task<IActionResult> Get(int id)
         {
             var user = await userService.GetById(id);
