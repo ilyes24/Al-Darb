@@ -15,5 +15,7 @@ namespace AlDarb.Services.Infrastructure.Repositories
         Task<IEnumerable<TCourseSession>> GetByCourseId(int courseId, ContextSession session, bool includeDeleted = false);
         Task<TCourseSession> Get(int id, ContextSession session, bool includeDeleted = false);
         Task<TCourseSession> Edit(TCourseSession user, ContextSession session);
+        Task<bool> ClearToSession(int courseId, DateTime start, DateTime end, ContextSession session, bool includeDeleted = false);
+        Task<int> NumberOfApplications(int sessionId, ContextSession session, bool includeDeleted = false);
     }
 }

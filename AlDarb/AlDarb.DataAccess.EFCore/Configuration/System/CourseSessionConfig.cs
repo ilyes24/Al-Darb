@@ -30,6 +30,13 @@ namespace AlDarb.DataAccess.EFCore.Configuration.System
                 .HasForeignKey(obj => obj.CourseSessionId)
                 .OnDelete(DeleteBehavior.NoAction)
                 .IsRequired();
+
+            builder
+                .HasMany(obj => obj.SessionTaskDates)
+                .WithOne()
+                .HasForeignKey(obj => obj.SessionId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace AlDarb.DataAccess.EFCore.Repositories
             var sessions = GetEntities(session, includeDeleted).AsQueryable();
 
             if (courseId != null)
-                sessions = sessions.Where(obj => obj.Course.Id == courseId);
+                sessions = sessions.Where(obj => obj.CourseId == courseId);
 
             if (startDate != null)
                 sessions = sessions.Where(obj => obj.StartDate > startDate);
@@ -49,6 +49,29 @@ namespace AlDarb.DataAccess.EFCore.Repositories
             return await GetEntities(session, includeDeleted)
                 .Where(obj => obj.StartDate == startDate)
                 .ToListAsync();
+        }
+
+        public async Task<bool> ClearToSession(int courseId, DateTime start, DateTime end, ContextSession session, bool includeDeleted = false)
+        {
+            var entity = GetEntities(session, includeDeleted);
+
+            var z = await entity.Where(obj => obj.CourseId == courseId).ToListAsync();
+
+            foreach (var e in z)
+            {
+                if ((e.StartDate < start && e.EndDate > start) || (e.StartDate < end && e.EndDate > end) || (e.StartDate > start && e.EndDate < end))
+                    return false;
+            }
+
+            return true;
+        }
+
+        public async Task<int> NumberOfApplications(int sessionId, ContextSession session, bool includeDeleted = false)
+        {
+            var entity = GetEntities(session, includeDeleted);
+            var z = await entity.Where(obj => obj.Id == sessionId).ToListAsync<CourseSession>();
+
+            return z.Count();
         }
     }
 }

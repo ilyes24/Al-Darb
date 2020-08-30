@@ -36,7 +36,7 @@ namespace AlDarb.DataAccess.EFCore.Repositories
             if (courseId != null)
                 entity = entity.Where(obj => obj.CourseId == courseId);
 
-            if(String.IsNullOrEmpty(title))
+            if(!String.IsNullOrEmpty(title))
                 entity = entity.Where(obj => obj.Title == title);
 
             return await entity.Where(obj => obj.Id > 0).ToListAsync();

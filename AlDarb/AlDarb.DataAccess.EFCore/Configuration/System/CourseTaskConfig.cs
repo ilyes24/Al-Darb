@@ -20,6 +20,8 @@ namespace AlDarb.DataAccess.EFCore.Configuration.System
             builder.Property(obj => obj.Title).IsRequired();
             builder.Property(obj => obj.Duration).IsRequired();
             builder.Property(obj => obj.Description).IsRequired();
+            builder.Property(obj => obj.Plan);
+            builder.Property(obj => obj.Type);
             builder.Property(obj => obj.Difficulty).IsRequired();
             builder.Property(obj => obj.IsDeleted).HasDefaultValue(false);
 
@@ -30,6 +32,13 @@ namespace AlDarb.DataAccess.EFCore.Configuration.System
                 .WithOne()
                 .HasForeignKey(obj => obj.CourseTaskId)
                 .OnDelete(DeleteBehavior.NoAction)
+                .IsRequired();
+
+            builder
+                .HasMany(obj => obj.SessionTaskDates)
+                .WithOne()
+                .HasForeignKey(obj => obj.TaskId)
+                .OnDelete(DeleteBehavior.Cascade)
                 .IsRequired();
         }
     }

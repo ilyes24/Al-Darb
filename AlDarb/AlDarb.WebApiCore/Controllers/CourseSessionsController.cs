@@ -37,6 +37,18 @@ namespace AlDarb.WebApiCore.Controllers
             return Ok(courseSession);
         }
 
+        [HttpGet("applications")]
+        public async Task<ActionResult<CourseSessionDTO>> GetSessionApplications([FromQuery] int sessionId, bool includeDeleted)
+        {
+            var courseSession = await courseSessionService.NumberOfApplications(sessionId, includeDeleted);
+
+            /*if (courseSession == null)
+            {
+                return NotFound();
+            }*/
+
+            return Ok(courseSession);
+        }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCourseSession(CourseSessionDTO courseSessionDto)
@@ -52,12 +64,17 @@ namespace AlDarb.WebApiCore.Controllers
         [HttpPost]
         public async Task<ActionResult<CourseSessionDTO>> PostCourseSession(CourseSessionDTO courseSessionDTO)
         {
-            var courseSession = await courseSessionService.Edit(courseSessionDTO);
+            if (await courseSessionService.ClearToSession(courseSessionDTO.CourseId, courseSessionDTO.StartDate, courseSessionDTO.EndDate))
+            {
+                var courseSession = await courseSessionService.Edit(courseSessionDTO);
 
-            if (courseSession == null)
-                return BadRequest();
+                if (courseSession == null)
+                    return BadRequest("ghi hak");
 
-            return Ok(courseSession);
+                return Ok(courseSession);
+            }
+
+            return BadRequest("change interval");
         }
 
         [HttpDelete("{id}")]

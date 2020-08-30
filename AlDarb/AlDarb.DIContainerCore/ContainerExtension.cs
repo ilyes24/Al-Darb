@@ -55,6 +55,9 @@ namespace AlDarb.DIContainerCore
             services.AddTransient<ICourseTaskService, CourseTaskService<CourseTask>>();
             services.AddTransient<ICourseTaskRepository<CourseTask>, CourseTaskRepository>();
 
+            services.AddTransient<ISessionTaskDateService, SessionTaskDateService<SessionTaskDate>>();
+            services.AddTransient<ISessionTaskDateRepository<SessionTaskDate>, SessionTaskDateRepository>();
+
             services.AddTransient<IProgressTaskService, ProgressTaskService<ProgressTask>>();
             services.AddTransient<IProgressTaskRepository<ProgressTask>, ProgressTaskRepository>();
 

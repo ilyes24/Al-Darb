@@ -26,6 +26,7 @@ namespace AlDarb.WebApiCore.Setup
             config.AddProfile<NotificationProfile>();
             config.AddProfile<ProgressTaskProfile>();
             config.AddProfile<ApplicationForSessionProfile>();
+            config.AddProfile<SessionTaskDateProfile>();
         }
     }
 }

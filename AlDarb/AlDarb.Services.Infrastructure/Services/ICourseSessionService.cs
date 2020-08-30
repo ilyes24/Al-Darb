@@ -15,5 +15,7 @@ namespace AlDarb.Services.Infrastructure.Services
         Task<IEnumerable<CourseSessionDTO>> GetByEndDate(DateTime endDate, bool includeDeleted = false);
         Task<bool> Delete(int id);
         Task<CourseSessionDTO> Edit(CourseSessionDTO dto);
+        Task<bool> ClearToSession(int courseId, DateTime start, DateTime end, bool includeDeleted = false);
+        Task<int> NumberOfApplications(int sessionId, bool includeDeleted = false);
     }
 }

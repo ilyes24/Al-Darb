@@ -4,14 +4,16 @@ using AlDarb.DataAccess.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AlDarb.DataAccess.EFCore.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200829023716_SessionTaskDate")]
+    partial class SessionTaskDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -202,14 +204,8 @@ namespace AlDarb.DataAccess.EFCore.Migrations
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
 
-                    b.Property<string>("Plan")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -348,10 +344,6 @@ namespace AlDarb.DataAccess.EFCore.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SessionId");
-
-                    b.HasIndex("TaskId");
 
                     b.ToTable("SessionTaskDates");
                 });
@@ -563,21 +555,6 @@ namespace AlDarb.DataAccess.EFCore.Migrations
                         .WithMany("ProgressTasks")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("AlDarb.Entities.SessionTaskDate", b =>
-                {
-                    b.HasOne("AlDarb.Entities.CourseSession", null)
-                        .WithMany("SessionTaskDates")
-                        .HasForeignKey("SessionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AlDarb.Entities.CourseTask", null)
-                        .WithMany("SessionTaskDates")
-                        .HasForeignKey("TaskId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 

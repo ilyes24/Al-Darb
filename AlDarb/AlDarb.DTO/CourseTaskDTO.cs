@@ -11,6 +11,8 @@ namespace AlDarb.DTO
         public string Description { get; set; }
         public string Duration { get; set; }
         public string Difficulty { get; set; }
+        public string Plan { get; set; }
+        public string Type { get; set; }
 
         public int CourseId { get; set; }
     }

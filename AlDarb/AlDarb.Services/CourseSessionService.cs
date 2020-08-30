@@ -26,6 +26,8 @@ namespace AlDarb.Services
 
         public async Task<CourseSessionDTO> Edit(CourseSessionDTO dto)
         {
+            dto.StartDate = dto.StartDate.AddDays(1);
+            dto.EndDate = dto.EndDate.AddDays(1);
             var courseSession = dto.MapTo<TCourseSession>();
             await courseSessionRepository.Edit(courseSession, Session);
             return courseSession.MapTo<CourseSessionDTO>();
@@ -59,6 +61,18 @@ namespace AlDarb.Services
         {
             var entity = await courseSessionRepository.GetList(courseId, startDate, endDate, Session, includeDeleted);
             return entity.MapTo<IEnumerable<CourseSessionDTO>>();
+        }
+
+        public async Task<bool> ClearToSession(int courseId, DateTime start, DateTime end, bool includeDeleted = false)
+        {
+            var entity = await courseSessionRepository.ClearToSession(courseId, start, end, Session, includeDeleted);
+            return entity;
+        }
+
+        public async Task<int> NumberOfApplications(int sessionId, bool includeDeleted = false)
+        {
+            var entity = await courseSessionRepository.NumberOfApplications(sessionId, Session, includeDeleted);
+            return entity;
         }
     }
 }

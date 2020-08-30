@@ -14,5 +14,6 @@ namespace AlDarb.Entities
         public virtual Course Course { get; set; }
 
         public virtual ICollection<ApplicationForSession> ApplicationForSessions { get; set; }
+        public virtual ICollection<SessionTaskDate> SessionTaskDates { get; set; }
     }
 }

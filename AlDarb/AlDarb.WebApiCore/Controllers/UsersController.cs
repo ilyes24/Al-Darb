@@ -50,7 +50,6 @@ namespace AlDarb.WebApiCore.Controllers
 
         [HttpPost]
         [Route("")]
-        [Authorize(Policy = "AdminOnly")]
         public async Task<IActionResult> Create(UserDTO userDto)
         {
             if (userDto.Id != 0)

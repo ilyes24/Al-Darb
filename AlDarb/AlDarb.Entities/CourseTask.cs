@@ -9,11 +9,14 @@ namespace AlDarb.Entities
         public string Description { get; set; }
         public string Duration { get; set; }
         public string Difficulty { get; set; }
+        public string Plan { get; set; }
+        public string Type { get; set; }
 
         public int CourseId { get; set; }
 
         public virtual Course Course { get; set; }
 
         public virtual ICollection<ProgressTask> ProgressTasks { get; set; }
+        public virtual ICollection<SessionTaskDate> SessionTaskDates { get; set; }
     }
 }
