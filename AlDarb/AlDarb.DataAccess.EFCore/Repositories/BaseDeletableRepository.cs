@@ -48,7 +48,6 @@ namespace AlDarb.DataAccess.EFCore
         public virtual async Task<bool> Exists(TType obj, ContextSession session, bool includeDeleted = false)
         {
             var x = await GetEntities(session, includeDeleted).Where(x => x.Id == obj.Id).CountAsync() > 0;
-            var i = 20;
             return x;
         }
 

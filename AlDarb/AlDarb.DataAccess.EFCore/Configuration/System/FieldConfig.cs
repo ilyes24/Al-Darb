@@ -20,12 +20,7 @@ namespace AlDarb.DataAccess.EFCore.Configuration.System
             builder.Property(obj => obj.Name).IsRequired();
             builder.Property(obj => obj.IsDeleted).HasDefaultValue(false);
 
-            builder
-                .HasMany(obj => obj.Courses)
-                .WithOne()
-                .HasForeignKey(obj => obj.FieldId)
-                .OnDelete(DeleteBehavior.NoAction)
-                .IsRequired();
+            
         }
     }
 }

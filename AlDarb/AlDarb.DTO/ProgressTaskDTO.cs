@@ -8,6 +8,7 @@ namespace AlDarb.DTO
     {
         public int Id { get; set; }
         public string progress { get; set; }
+        public string fileUrl { get; set; }
         public DateTime ProgressDate { get; set; }
         public int? rating { get; set; }
 

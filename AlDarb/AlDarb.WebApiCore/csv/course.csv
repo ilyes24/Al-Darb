@@ -1,0 +1,6 @@
+Name,Duration,Description,PictureUrl,AvgRating,SumRating,UserId,User,CourseFields,CourseSessions,CourseTasks,CourseRatings,IsDeleted,Id
+Test  Course,5,This is a course description, we will start by learning the fundemantls bla bla bla
+* this is the first step bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+*this is another step bla bla bla blabla bla bla blabla bla bla blabla bla bla bla0,http://localhost:3001/Resources\Images\cover.png,4,1,41,,,,,,False,1
+Learn ML.NET,10,Welcome to Machine Learning with ML.NET! In this introductory video series we will introduce the concept of Machine Learning, what you can do with various tooling, and how to get started with ML.NET!,http://localhost:3001/Resources\Images\maxresdefault.jpg,5,1,41,,,,,,False,2
+Presentation Course,10,Presentation Course,http://localhost:3001/Resources\Images\1912790_7fb7.jpg,0,0,41,,,,,,False,3

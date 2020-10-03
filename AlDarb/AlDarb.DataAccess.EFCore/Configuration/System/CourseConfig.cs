@@ -26,7 +26,7 @@ namespace AlDarb.DataAccess.EFCore.Configuration.System
             builder.Property(obj => obj.SumRating).HasDefaultValue(0);
 
             builder.Ignore(x => x.User);
-            builder.Ignore(x => x.Field);
+            
 
             builder
                 .HasMany(obj => obj.CourseSessions)

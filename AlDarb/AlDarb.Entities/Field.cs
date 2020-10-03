@@ -8,6 +8,6 @@ namespace AlDarb.Entities
     {
         public string Name { get; set; }
 
-        public virtual ICollection<Course> Courses { get; set; }
+        public virtual ICollection<CourseField> CourseFields { get; set; }
     }
 }

@@ -75,9 +75,6 @@ namespace AlDarb.DataAccess.EFCore.Migrations
                     b.Property<int>("Duration")
                         .HasColumnType("int");
 
-                    b.Property<int>("FieldId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
@@ -102,11 +99,36 @@ namespace AlDarb.DataAccess.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FieldId");
-
                     b.HasIndex("UserId");
 
                     b.ToTable("Courses");
+                });
+
+            modelBuilder.Entity("AlDarb.Entities.CourseField", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FieldId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("FieldId");
+
+                    b.ToTable("CourseFields");
                 });
 
             modelBuilder.Entity("AlDarb.Entities.CourseRating", b =>
@@ -219,6 +241,94 @@ namespace AlDarb.DataAccess.EFCore.Migrations
                     b.ToTable("CourseTasks");
                 });
 
+            modelBuilder.Entity("AlDarb.Entities.Donation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("DonationAmount")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0);
+
+                    b.Property<int>("DonationPostId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PaypalEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Donations");
+                });
+
+            modelBuilder.Entity("AlDarb.Entities.DonationPost", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("Amount")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0);
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FieldId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DonationPosts");
+                });
+
+            modelBuilder.Entity("AlDarb.Entities.DonationPostField", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DonationPostId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FieldId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DonationPostFields");
+                });
+
             modelBuilder.Entity("AlDarb.Entities.Field", b =>
                 {
                     b.Property<int>("Id")
@@ -293,6 +403,9 @@ namespace AlDarb.DataAccess.EFCore.Migrations
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("fileUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("progress")
                         .IsRequired()
@@ -492,16 +605,25 @@ namespace AlDarb.DataAccess.EFCore.Migrations
 
             modelBuilder.Entity("AlDarb.Entities.Course", b =>
                 {
-                    b.HasOne("AlDarb.Entities.Field", null)
-                        .WithMany("Courses")
-                        .HasForeignKey("FieldId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.HasOne("AlDarb.Entities.User", null)
                         .WithMany("Courses")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("AlDarb.Entities.CourseField", b =>
+                {
+                    b.HasOne("AlDarb.Entities.Course", "Course")
+                        .WithMany("CourseFields")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AlDarb.Entities.Field", "Field")
+                        .WithMany("CourseFields")
+                        .HasForeignKey("FieldId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 

@@ -34,7 +34,6 @@ namespace AlDarb.Services
 
         public async Task<CourseDTO> Edit(CourseDTO dto)
         {
-            dto.UserId = Session.UserId;
             var course = dto.MapTo<TCourse>();
             await courseRepository.Edit(course, Session);
             return course.MapTo<CourseDTO>();

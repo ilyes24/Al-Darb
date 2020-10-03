@@ -20,6 +20,7 @@ namespace AlDarb.WebApiCore.Setup
 
             config.AddProfile<FieldProfile>();
             config.AddProfile<CourseProfile>();
+            config.AddProfile<CourseFieldProfile>();
             config.AddProfile<CourseRatingProfile>();
             config.AddProfile<CourseSessionProfile>();
             config.AddProfile<CourseTaskProfile>();
@@ -27,6 +28,9 @@ namespace AlDarb.WebApiCore.Setup
             config.AddProfile<ProgressTaskProfile>();
             config.AddProfile<ApplicationForSessionProfile>();
             config.AddProfile<SessionTaskDateProfile>();
+            config.AddProfile<DonationProfile>();
+            config.AddProfile<DonationPostProfile>();
+            config.AddProfile<DonationPostFieldProfile>();
         }
     }
 }

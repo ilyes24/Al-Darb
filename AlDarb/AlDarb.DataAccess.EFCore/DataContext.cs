@@ -30,6 +30,10 @@ namespace AlDarb.DataAccess.EFCore
         public DbSet<ProgressTask> ProgressTask { get; set; }
         public DbSet<ApplicationForSession> ApplicationForSession { get; set; }
         public DbSet<Notification> Notification { get; set; }
+        public DbSet<Donation> Donation { get; set; }
+        public DbSet<DonationPost> DonationPost { get; set; }
+        public DbSet<DonationPostField> DonationPostField { get; set; }
+        public DbSet<CourseField> CourseField { get; set; }
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -42,6 +46,8 @@ namespace AlDarb.DataAccess.EFCore
             modelBuilder.ApplyConfiguration(new UserClaimConfig());
             modelBuilder.ApplyConfiguration(new SettingsConfig());
 
+            
+
             modelBuilder.ApplyConfiguration(new CourseConfig());
             modelBuilder.ApplyConfiguration(new FieldConfig());
             modelBuilder.ApplyConfiguration(new CourseRatingConfig());
@@ -51,6 +57,12 @@ namespace AlDarb.DataAccess.EFCore
             modelBuilder.ApplyConfiguration(new ProgressTaskConfig());
             modelBuilder.ApplyConfiguration(new ApplicationForSessionConfig());
             modelBuilder.ApplyConfiguration(new NotificationConfig());
+            modelBuilder.ApplyConfiguration(new DonationConfig());
+            modelBuilder.ApplyConfiguration(new DonationPostConfig());
+            modelBuilder.ApplyConfiguration(new DonationPostFieldConfig());
+            modelBuilder.ApplyConfiguration(new CourseFieldConfig());
+
+            
 
             modelBuilder.HasDefaultSchema("starter_core");
         }

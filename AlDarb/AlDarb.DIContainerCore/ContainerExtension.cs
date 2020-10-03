@@ -66,6 +66,18 @@ namespace AlDarb.DIContainerCore
 
             services.AddTransient<INotificationService, NotificationService<Notification>>();
             services.AddTransient<INotificationRepository<Notification>, NotificationRepository>();
+
+            services.AddTransient<IDonationService, DonationService<Donation>>();
+            services.AddTransient<IDonationRepository<Donation>, DonationRepository>();
+
+            services.AddTransient<IDonationPostService, DonationPostService<DonationPost>>();
+            services.AddTransient<IDonationPostRepository<DonationPost>, DonationPostRepository>();
+
+            services.AddTransient<IDonationPostFieldService, DonationPostFieldService<DonationPostField>>();
+            services.AddTransient<IDonationPostFieldRepository<DonationPostField>, DonationPostFieldRepository>();
+
+            services.AddTransient<ICourseFieldService, CourseFieldService<CourseField>>();
+            services.AddTransient<ICourseFieldRepository<CourseField>, CourseFieldRepository>();
         }
     }
 }
